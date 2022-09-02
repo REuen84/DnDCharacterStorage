@@ -2,16 +2,56 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import Service.ActorService;
 import Service.JobService;
+import Service.UserService;
 
 public class DnDMenu {
    public static void main(String[] args) throws SQLException {
+       Scanner userInput = new Scanner(System.in);
+       UserService us = new UserService();
+       boolean intro = true;
+       boolean login = true;
        boolean usingApp = true;
        ActorService as = new ActorService();
        JobService js = new JobService();
 
+       while(intro) {
+       System.out.println("Welcome to Character Storage! What would you like to do? 1: Login, 2: Quit");
+       String line = userInput.nextLine();
+       System.out.println("");
+           if (line.equals("1")) {
+               while (login) {
+                   System.out.println("Please enter your username: ");
+                   String user = userInput.nextLine();
+                   System.out.println("");
+                   System.out.println("Please enter your password: ");
+                   String password = userInput.nextLine();
+                   System.out.println("");
+                   if (us.checkLoginInfo(user, password)) {
+                       System.out.println("Login successful! Welcome back, traveler.");
+                       intro = false;
+                       login = false;
+                       System.out.println("");
+                   } else {
+                       System.out.println("Uh oh, that username and password didn't work. Try again.");
+                       System.out.println("");
+                   }
+               }
+           } else if (line.equals("2")) {
+               System.out.println("Very well. Maybe next time.");
+               System.out.println("");
+               intro = false;
+               login = false;
+               usingApp = false;
+           } else {
+               System.out.println("Invalid input, please choose one of the provided options.");
+               System.out.println("");
+           }
+       }
+
+
        while(usingApp) {
            System.out.println("Select an option: 1: View Class Details, 2: View Stored Characters, 3: Add New Character, 4: Quit");
-           Scanner userInput = new Scanner(System.in);
+           //Scanner userInput = new Scanner(System.in);
            String line = userInput.nextLine();
            System.out.println("");
            if (line.equals("1")) {
@@ -89,10 +129,10 @@ public class DnDMenu {
                System.out.println("");
                System.out.println("What level is your character?");
                int level = userInput.nextInt();
-               System.out.println("");
              //  String out = String.format("%s is a level %2d %s", name, level, cla);
              //  System.out.println(out);
                as.addActor(name, cla, level);
+               System.out.println("");
 
            } else if (line.equals("4")) {
                System.out.println("Until next time traveler, your party shall await your return.");
