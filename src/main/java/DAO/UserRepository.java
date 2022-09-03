@@ -21,12 +21,24 @@ public class UserRepository {
             statement.setString(1, username);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                User u = new User(rs.getString("username"), rs.getString("password"), rs.getInt("userID"));
+                User u = new User(rs.getString("username"), rs.getString("password"), rs.getInt("user_id"));
                 return u;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void addUser(User u){
+        try{
+            PreparedStatement statement = conn.prepareStatement("insert into Userlist(username, password, user_id) " + "values (?, ?, ?)");
+            statement.setString(1, u.getUsername());
+            statement.setString(2, u.getPassword());
+            statement.setInt(3, u.getUserID());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
     }
 }

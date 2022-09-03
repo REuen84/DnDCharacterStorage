@@ -6,6 +6,7 @@ import Util.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class UserService {
     UserRepository ur;
@@ -32,5 +33,19 @@ public class UserService {
                 return false;
             }
         }
+    }
+
+    public User getUserByUsername(String username){ return ur.getUserByUsername(username); }
+
+    public void addUser(String username, String password) throws SQLException {
+        User u = ur.getUserByUsername(username);
+        if(u == null){
+            User newUser = new User(username, password);
+            ur.addUser(newUser);
+            System.out.println("New user successfully created! Try logging in now.");
+        }else{
+            System.out.println("Looks like that username is already taken, try a different one.");
+        }
+        conn.commit();
     }
 }

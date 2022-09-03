@@ -23,15 +23,16 @@ public class User {
         this.userID = userID;
     }
 
-    public User(String username, String password){
+    public User(String username, String password) throws SQLException {
         this.username = username;
         this.password = password;
         int newID = 0;
+        conn = ConnectionUtil.getConnection();
         try{
-            PreparedStatement statement = conn.prepareStatement("select MAX(userID) from Userlist");
+            PreparedStatement statement = conn.prepareStatement("select * from Userlist where user_id = ( select MAX(user_id) from Userlist )" );
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
-                int last = rs.getInt("userID");
+                int last = rs.getInt("user_id");
                 newID = last + 1;
             }
         } catch (SQLException e) {
