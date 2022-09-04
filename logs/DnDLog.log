@@ -1,0 +1,16 @@
+[INFO ] 2022-09-04 18:14:11.371 [main] DnDMenu - Application started.
+[INFO ] 2022-09-04 18:14:32.865 [main] DnDMenu - User attempted to create new Username and Password.
+[INFO ] 2022-09-04 18:14:43.837 [main] DnDMenu - Cruzar successfully logged in.
+[INFO ] 2022-09-04 18:15:01.953 [main] DnDMenu - User accessed the Class Details Menu.
+[INFO ] 2022-09-04 18:15:08.021 [main] DnDMenu - User viewed Monk details.
+[INFO ] 2022-09-04 18:15:15.083 [main] DnDMenu - User accessed the View Characters Menu.
+[INFO ] 2022-09-04 18:15:21.124 [main] DnDMenu - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-04 18:15:39.288 [main] DnDMenu - User attempted to add a new character.
+[INFO ] 2022-09-04 18:15:39.294 [main] DnDMenu - User gave invalid input.
+[INFO ] 2022-09-04 18:15:47.336 [main] DnDMenu - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-04 18:16:11.502 [main] DnDMenu - User attempted to update a character's level
+[INFO ] 2022-09-04 18:16:11.508 [main] DnDMenu - User gave invalid input.
+[INFO ] 2022-09-04 18:16:19.543 [main] DnDMenu - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-04 18:16:27.581 [main] DnDMenu - User attempted to delete a character.
+[INFO ] 2022-09-04 18:16:35.648 [main] DnDMenu - User deleted a character.
+[INFO ] 2022-09-04 18:16:39.643 [main] DnDMenu - Application closed.
