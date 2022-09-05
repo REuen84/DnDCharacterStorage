@@ -15,4 +15,12 @@ public class JobService {
     public JobService(JobRepository jr) { this.jr = jr; }
 
     public Job getDescriptionFromClass(String cla) { return jr.getDescriptionFromClass(cla); }
-}
+
+    public boolean checkClass(String cla){
+        Job j = jr.getDescriptionFromClass(cla);
+        if (j == null){
+            return false;
+        }else{ return true;}
+        }
+
+    }

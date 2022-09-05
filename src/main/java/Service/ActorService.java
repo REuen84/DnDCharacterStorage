@@ -25,6 +25,10 @@ public class ActorService {
         return ar.getAllActors();
     }
 
+    public List<Actor> getActorsByUser(String username){
+        return ar.getActorByUser(username);
+    }
+
     public void addActor(String name, String cla, int level, String currentUser, int userID) throws SQLException {
         List<Actor> existingActors = ar.getActorByUser(currentUser);
         boolean unique = true;
@@ -76,4 +80,5 @@ public class ActorService {
         conn.commit();
         System.out.println("Character deleted, they will be missed.");
     }
+
 }

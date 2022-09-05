@@ -17,11 +17,11 @@ public class JobRepository {
 
     public Job getDescriptionFromClass(String cla) {
         try {
-            PreparedStatement statement = conn.prepareStatement("Select * from Class where class_name = ?");
+            PreparedStatement statement = conn.prepareStatement("Select * from Class where cha_class = ?");
             statement.setString(1, cla);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                return new Job(rs.getString("class_name"), rs.getString("description"));
+                return new Job(rs.getString("cha_class"), rs.getString("description"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
