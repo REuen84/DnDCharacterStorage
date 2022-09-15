@@ -1,6 +1,7 @@
 package Service;
 
 import DAO.UserRepository;
+import Model.Account;
 import Model.User;
 import Util.ConnectionUtil;
 
@@ -48,4 +49,23 @@ public class UserService {
         }
         conn.commit();
     }
+
+    public Account checkAccountInfo(String username, String password) {
+        User existingUser = ur.getUserByUsername(username);
+        if (existingUser == null) {
+            Account a = new Account(username, false);
+            return a;
+        } else {
+            String existingname = existingUser.getUsername();
+            String correctpword = existingUser.getPassword();
+            if (existingname.equals(username) && correctpword.equals(password)) {
+                Account a = new Account(username, true);
+                return a;
+            } else {
+                Account a = new Account(username, false);
+                return a;
+            }
+        }
+    }
+
 }

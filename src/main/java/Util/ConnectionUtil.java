@@ -10,8 +10,8 @@ public class ConnectionUtil {
     public static Connection getConnection() throws SQLException {
         if(conn == null){
             try{
-                String url = "jdbc:sqlserver://localhost:1433;TrustServerCertificate=True";
-                String username = "sa";
+                String url = "jdbc:sqlserver://revaeuen.database.windows.net:1433;database=DnDCharacterStorage;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+                String username = "Cruzar";
                 String password = "P@SSWORD123";
                 conn = DriverManager.getConnection(url, username, password);
             } catch (SQLException e) {

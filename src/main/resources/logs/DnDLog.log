@@ -1,0 +1,28 @@
+
+[INFO ] 2022-09-06 11:45:50.660 [main] DndAPI - Application started.
+[INFO ] 2022-09-06 11:46:10.267 [main] DndAPI - User attempted to create new Username and Password.
+[INFO ] 2022-09-06 11:46:26.344 [main] DndAPI - Cruzar successfully logged in.
+[INFO ] 2022-09-06 11:47:07.727 [main] DndAPI - User accessed the Class Details Menu.
+[INFO ] 2022-09-06 11:47:19.851 [main] DndAPI - User viewed Paladin details.
+[INFO ] 2022-09-06 11:47:43.060 [main] DndAPI - User gave invalid input.
+[INFO ] 2022-09-06 11:47:56.174 [main] DndAPI - User accessed the View Characters Menu.
+[INFO ] 2022-09-06 11:48:02.246 [main] DndAPI - User viewed their created characters.
+[INFO ] 2022-09-06 11:48:16.369 [main] DndAPI - User accessed the View Characters Menu.
+[INFO ] 2022-09-06 11:48:25.467 [main] DndAPI - User viewed another user's characters.
+[INFO ] 2022-09-06 11:48:34.552 [main] DndAPI - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-06 11:48:58.803 [main] DndAPI - User attempted to add a new character.
+[INFO ] 2022-09-06 11:48:58.806 [main] DndAPI - User gave invalid input.
+[INFO ] 2022-09-06 11:49:21.024 [main] DndAPI - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-06 11:49:34.192 [main] DndAPI - User attempted to add a new character.
+[INFO ] 2022-09-06 11:49:34.195 [main] DndAPI - User gave invalid input.
+[INFO ] 2022-09-06 11:49:41.212 [main] DndAPI - User accessed the View Characters Menu.
+[INFO ] 2022-09-06 11:49:43.225 [main] DndAPI - User viewed their created characters.
+[INFO ] 2022-09-06 11:50:06.420 [main] DndAPI - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-06 11:50:26.624 [main] DndAPI - User attempted to update a character's level
+[INFO ] 2022-09-06 11:50:26.627 [main] DndAPI - User gave invalid input.
+[INFO ] 2022-09-06 11:50:33.654 [main] DndAPI - User accessed the Manage Characters Menu.
+[INFO ] 2022-09-06 11:50:35.666 [main] DndAPI - User attempted to delete a character.
+[INFO ] 2022-09-06 11:50:50.808 [main] DndAPI - User deleted a character.
+[INFO ] 2022-09-06 11:50:55.853 [main] DndAPI - User accessed the View Characters Menu.
+[INFO ] 2022-09-06 11:50:57.861 [main] DndAPI - User viewed their created characters.
+[INFO ] 2022-09-06 11:51:17.001 [main] DndAPI - Application closed.
