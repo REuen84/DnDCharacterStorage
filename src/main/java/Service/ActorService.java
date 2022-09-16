@@ -29,7 +29,7 @@ public class ActorService {
         return ar.getActorByUser(username);
     }
 
-    public void addActor(String name, String cla, int level, String currentUser, int userID) throws SQLException {
+    /*public void addActor(String name, String cla, int level, String currentUser, int userID) throws SQLException {
         List<Actor> existingActors = ar.getActorByUser(currentUser);
         boolean unique = true;
         for (int i = 0; i < existingActors.size(); i++) {
@@ -44,11 +44,14 @@ public class ActorService {
             System.out.println("New character successfully saved!");
         } else {
             System.out.println("Hmm, seems like it didn't work. Maybe you already named a character that? Try something else.");
-        }
+        }*/
+    public void addActor(String name, String cla, int level, int userID) throws SQLException {
+        Actor newActor = new Actor(name, cla, level, userID);
+        ar.addActor(newActor);
         conn.commit();
     }
 
-    public void updateActor(String name, int userID, int newLevel) throws SQLException {
+   /* public void updateActor(String name, int userID, int newLevel) throws SQLException {
         Actor a = ar.getActorByName(name, userID);
 
         if (a == null) {
@@ -58,7 +61,15 @@ public class ActorService {
             System.out.println("Level updated!");
         }
         conn.commit();
+    }*/
+
+    public void updateActor(int actorID, int newLevel) throws SQLException {
+        Actor a = ar.getActorByID(actorID);
+            ar.updateActor(a, newLevel);
+            System.out.println("Level updated!");
+        conn.commit();
     }
+
 
     public boolean deleteActor1(String name, int userID) {
         Actor a = ar.getActorByName(name, userID);
@@ -80,5 +91,9 @@ public class ActorService {
         conn.commit();
         System.out.println("Character deleted, they will be missed.");
     }
+
+    public Actor getActorfromID(String chaID) {
+        int actorID = Integer.parseInt(chaID);
+        return ar.getActorByID(actorID); }
 
 }

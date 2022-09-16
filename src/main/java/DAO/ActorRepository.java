@@ -111,4 +111,21 @@ public class ActorRepository {
                 e.printStackTrace();
             }
         }
+
+    public Actor getActorByID(int actorID){
+        try{
+            PreparedStatement statement = conn.prepareStatement("select * from Actor where cha_id = ?");
+            statement.setInt(1, actorID);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"));
+                return a;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+    }
+
+

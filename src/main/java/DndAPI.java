@@ -4,6 +4,7 @@ import java.util.Scanner;
 import Model.Account;
 import Model.Actor;
 import Model.User;
+import Model.uActor;
 import Service.ActorService;
 import Service.JobService;
 import Service.UserService;
@@ -21,6 +22,7 @@ public class DndAPI {
         ActorService as = new ActorService();
         JobService js = new JobService();
         UserService us = new UserService();
+        String currentUser = "";
         Javalin app = Javalin.create(JavalinConfig::enableCorsForAllOrigins).start(9000);
 
         app.get("/characters", ctx -> {
@@ -41,19 +43,35 @@ public class DndAPI {
             ctx.json(us.checkAccountInfo(ctx.pathParam("username"), ctx.pathParam("password")));
         });
 
-      //  app.get("/characters/username/{username}", ctx -> {
-       //     ctx.json(as.getActorsByUser(ctx.pathParam("username")));
-      //  });
+        app.get("/view/{username}", ctx -> {
+            ctx.json(as.getActorsByUser(ctx.pathParam("username")));
+        });
 
-      //  app.get("/characters/class/{class}", ctx -> {
-        //    ctx.json()
-       // })
+        app.get("/userID/{username}", ctx -> {
+            ctx.json(us.getUserByUsername(ctx.pathParam("username")));
+        });
 
-      //  app.post("/characters/mycharacters", ctx -> {
-      //      ObjectMapper mapper = new ObjectMapper();
-      //      Actor createdActor = mapper.readValue(ctx.body(), Actor.class);
-      //      as.addActor(createdActor.getName(), createdActor.getCla(), createdActor.getLevel(), );
-      //  })
+        app.post("/actors", ctx -> {
+            ObjectMapper mapper = new ObjectMapper();
+            Actor createdActor = mapper.readValue(ctx.body(), Actor.class);
+            as.addActor(createdActor.getName(), createdActor.getCla(), createdActor.getLevel(), createdActor.getUserID());
+        });
+
+        app.get("/characters/chaID/{chaID}", ctx -> {
+            ctx.json(as.getActorfromID(ctx.pathParam("chaID")));
+        });
+
+        app.post("/update", ctx -> {
+            ObjectMapper mapper = new ObjectMapper();
+            uActor updatedActor = mapper.readValue(ctx.body(), uActor.class);
+            as.updateActor(updatedActor.getActorID(), updatedActor.getNewLevel());
+        });
+
+        app.post("/delete", ctx -> {
+            ObjectMapper mapper = new ObjectMapper();
+            Actor targetActor = mapper.readValue(ctx.body(), Actor.class);
+            as.deleteActor2(targetActor.getName(), targetActor.getUserID());
+        });
 
 
 

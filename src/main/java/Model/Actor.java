@@ -62,4 +62,5 @@ public class Actor {
     public void setActorID(int actorID) { this.actorID = actorID; }
 
     public int getUserID() { return userID; }
+
 }
