@@ -70,6 +70,13 @@ public class ActorService {
         conn.commit();
     }
 
+    public void updateArt(int actorID, String newUrl) throws SQLException {
+        Actor a = ar.getActorByID(actorID);
+        ar.updateArt(a, newUrl);
+        System.out.println("Art updated!");
+        conn.commit();
+    }
+
 
     public boolean deleteActor1(String name, int userID) {
         Actor a = ar.getActorByName(name, userID);

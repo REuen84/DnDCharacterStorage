@@ -21,7 +21,7 @@ public class JobRepository {
             statement.setString(1, cla);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                return new Job(rs.getString("cha_class"), rs.getString("description"));
+                return new Job(rs.getString("cha_class"), rs.getString("description"), rs.getString("url"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

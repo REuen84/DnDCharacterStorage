@@ -26,10 +26,12 @@ public class DndAPI {
         Javalin app = Javalin.create(JavalinConfig::enableCorsForAllOrigins).start(9000);
 
         app.get("/characters", ctx -> {
+            myLogger.info("User viewed all characters.");
             ctx.json(as.getAllActors());
         });
 
         app.get("/description/{className}", ctx -> {
+            myLogger.info("User viewed information about a class.");
             ctx.json(js.getDescriptionFromClass(ctx.pathParam("className")));
         });
 
@@ -40,6 +42,7 @@ public class DndAPI {
        // });
 
         app.get("/users/{username}/{password}", ctx -> {
+            myLogger.info("User attempted to log in.");
             ctx.json(us.checkAccountInfo(ctx.pathParam("username"), ctx.pathParam("password")));
         });
 
@@ -52,6 +55,7 @@ public class DndAPI {
         });
 
         app.post("/actors", ctx -> {
+            myLogger.info("User created a new character.");
             ObjectMapper mapper = new ObjectMapper();
             Actor createdActor = mapper.readValue(ctx.body(), Actor.class);
             as.addActor(createdActor.getName(), createdActor.getCla(), createdActor.getLevel(), createdActor.getUserID());
@@ -62,12 +66,21 @@ public class DndAPI {
         });
 
         app.post("/update", ctx -> {
+            myLogger.info("User updated a character's level.");
             ObjectMapper mapper = new ObjectMapper();
             uActor updatedActor = mapper.readValue(ctx.body(), uActor.class);
             as.updateActor(updatedActor.getActorID(), updatedActor.getNewLevel());
         });
 
+        app.post("/updateArt", ctx -> {
+            myLogger.info("User updated a character's art.");
+            ObjectMapper mapper = new ObjectMapper();
+            uActor updatedActor = mapper.readValue(ctx.body(), uActor.class);
+            as.updateArt(updatedActor.getActorID(), updatedActor.getNewUrl());
+        });
+
         app.post("/delete", ctx -> {
+            myLogger.info("User deleted a character.");
             ObjectMapper mapper = new ObjectMapper();
             Actor targetActor = mapper.readValue(ctx.body(), Actor.class);
             as.deleteActor2(targetActor.getName(), targetActor.getUserID());

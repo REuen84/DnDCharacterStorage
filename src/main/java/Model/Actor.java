@@ -14,16 +14,18 @@ public class Actor {
     public String cla;
     public int actorID;
     public int userID;
+    public String url;
 
     public Actor() throws SQLException {
         conn = ConnectionUtil.getConnection();
     }
-    public Actor(String name, String cla, int level, int actorID, int userID){
+    public Actor(String name, String cla, int level, int actorID, int userID, String url){
         this.name = name;
         this.cla = cla;
         this.level = level;
         this.actorID = actorID;
         this.userID = userID;
+        this.url = url;
     }
 
     public Actor(String name, String cla, int level, int userID) throws SQLException {
@@ -31,6 +33,7 @@ public class Actor {
         this.cla = cla;
         this.level = level;
         this.userID = userID;
+        this.url = "https://image.shutterstock.com/image-vector/default-avatar-profile-icon-social-260nw-1913928688.jpg";
         int newID = 0;
         conn = ConnectionUtil.getConnection();
         try{
@@ -62,5 +65,7 @@ public class Actor {
     public void setActorID(int actorID) { this.actorID = actorID; }
 
     public int getUserID() { return userID; }
+
+    public String getUrl() { return url; }
 
 }

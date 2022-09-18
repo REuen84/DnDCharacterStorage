@@ -20,7 +20,7 @@ public class ActorRepository {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("Select * from Actor");
             while(rs.next()){
-                Actor loadedActor = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"));
+                Actor loadedActor = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"), rs.getString("url"));
                 allActors.add(loadedActor);
             }
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class ActorRepository {
             statement.setString(1, cla);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"));
+                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"), rs.getString("url"));
                 return a;
             }
         } catch (SQLException e) {
@@ -65,7 +65,7 @@ public class ActorRepository {
             statement.setString(1, currentUser);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                Actor loadedActor = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"));
+                Actor loadedActor = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"), rs.getString("url"));
                 actors.add(loadedActor);
             }
         } catch (SQLException e) {
@@ -81,7 +81,7 @@ public class ActorRepository {
             statement.setInt(2, userID);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"));
+                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"), rs.getString("url"));
                 return a;
             }
         } catch (SQLException e) {
@@ -101,6 +101,17 @@ public class ActorRepository {
         }
         }
 
+    public void updateArt(Actor a, String newUrl){
+        try{
+            PreparedStatement statement = conn.prepareStatement("update Actor set url = ? where cha_id = ?");
+            statement.setString(1, newUrl);
+            statement.setInt(2, a.getActorID());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
         public void deleteActor(Actor a){
             try{
                 PreparedStatement statement = conn.prepareStatement("delete from Actor where cha_name = ? and user_id = ?");
@@ -118,7 +129,7 @@ public class ActorRepository {
             statement.setInt(1, actorID);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"));
+                Actor a = new Actor(rs.getString("cha_name"), rs.getString("cha_class"), rs.getInt("cha_level"), rs.getInt("cha_id"), rs.getInt("user_id"), rs.getString("url"));
                 return a;
             }
         } catch (SQLException e) {
