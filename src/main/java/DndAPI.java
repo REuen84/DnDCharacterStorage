@@ -47,6 +47,7 @@ public class DndAPI {
         });
 
         app.get("/view/{username}", ctx -> {
+            myLogger.info("User viewed a character list.");
             ctx.json(as.getActorsByUser(ctx.pathParam("username")));
         });
 
@@ -62,6 +63,7 @@ public class DndAPI {
         });
 
         app.get("/characters/chaID/{chaID}", ctx -> {
+            myLogger.info("User viewed a character page.");
             ctx.json(as.getActorfromID(ctx.pathParam("chaID")));
         });
 

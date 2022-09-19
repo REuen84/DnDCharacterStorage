@@ -5,9 +5,6 @@ plugins {
 // Shadow task depends on Jar task, so these configs are reflected for Shadow as well
 tasks.jar {
     manifest.attributes["Main-Class"] = "DndAPI"
-    manifest {
-        attributes 'Clas-Path': '/buid/libs/'
-    }
 }
 
 
